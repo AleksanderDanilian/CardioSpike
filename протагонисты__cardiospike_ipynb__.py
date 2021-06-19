@@ -499,26 +499,3 @@ for i in range(10):
 
   plt.plot(totalTrueVals[i])  
   plt.plot(totalResultCum[i])
-
-import pandas as pd
-
-d = pd.read_csv('/content/submission899.csv')
-
-temp = []
-for z in range(len(pr1)):
-  
-  if pr1[z]==1:
-    temp.append(z)
-  elif pr1[z]==0:
-    dl = len(temp)
-    temp = []
-    if dl > 0 and dl < 4:
-      pr1[z-dl:z]=[0 for el in range(dl)]
-
-pr1=d['y'].values
-
-d.drop(labels = 'y', axis = 1, inplace = True)
-
-d['y'] = pr1
-
-d.to_csv('submission90.csv')
